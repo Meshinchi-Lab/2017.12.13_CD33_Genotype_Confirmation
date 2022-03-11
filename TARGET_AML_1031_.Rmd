@@ -1,0 +1,52 @@
+---
+title: "CD33 Expression"
+output: html_document
+---
+
+```{r setup}
+library(knitr)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=50),tidy=TRUE, fig.align='center', fig.height = 10, fig.width = 10)
+knitr::opts_knit$set(root.dir = '~/RNA_seq_Analysis/2017.12.13_CD33_Genotype_Confirmation/')
+```
+
+```{r message = FALSE, warning=FALSE}
+library(stringr)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(tidyr)
+library(tibble)
+getwd()
+```
+
+
+```{r}
+CDE.1031 <- read.csv("~/reference_mapping-files/TARGET_AML_1031_CDE_cleaned_12.2.2017.csv",
+                     stringsAsFactors = FALSE, row.names = 1)
+head(CDE.1031)
+```
+
+
+```{r}
+regs <- c(830388,
+824438,
+833262,
+820991,
+825359,
+823148)
+```
+
+
+```{r}
+idx <- CDE.1031$Patient.ID %in% regs
+
+
+CDE.1031[idx,"USI"]
+```
+
+
+
+
+
+
+
